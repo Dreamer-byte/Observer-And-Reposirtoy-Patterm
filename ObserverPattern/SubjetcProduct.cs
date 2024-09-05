@@ -39,7 +39,7 @@ namespace ObserverPattern
         {
             _observers.Remove(observer);
         }
-
+        /*
         public void updateStock(int productId, int newStock)
         {
             _stockproducts[productId] = newStock;
@@ -57,6 +57,6 @@ namespace ObserverPattern
                 }
             }
 
-        }
+        }*/
     }
 }

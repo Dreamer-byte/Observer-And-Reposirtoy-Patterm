@@ -9,10 +9,12 @@ namespace ObserverPattern
     public interface IRepositoryProduct
     {
         void AddProduct(Product product);
-        Product GetProduct(int id);
+        
         void DeleteProduct(int id);
         Product UpdateProduct(Product product);
-        IEnumerable<Product> GetAllProducts();
+
+        Task<Product> GetProductByBarCodeAsync(string bar_code);
+        Task<IEnumerable<Product>> GetAllProductsAsync();
 
 
     }

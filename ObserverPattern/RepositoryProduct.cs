@@ -8,45 +8,42 @@ namespace ObserverPattern
 {
     public class RepositoryProduct : IRepositoryProduct
     {
-        private List<Product> _products = new List<Product>();
+        private readonly ProductService _productService;
 
-        public List<Product> Products { get => _products; set => _products = value; }
 
-        public void AddProduct(Product p)
+
+        public RepositoryProduct(IProductService productservice) 
         {
-            Products.Add(p);
+            _productService = (ProductService)productservice;
+        }
+
+        
+
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        {
+            return await _productService.GetAllProductsAsync();
+        }
+
+        public async Task<Product> GetProductByBarCodeAsync(string bar_code)
+        {
+           return await _productService.GetProductByBarCodeAsync(bar_code);
+        }
+
+
+
+        public void AddProduct(Product product)
+        {
+            throw new NotImplementedException();
         }
 
         public void DeleteProduct(int id)
         {
-            var product = GetProduct(id);
-            
-            if(product != null) 
-            {
-                Products.Remove(product);
-            }
-
-        }
-
-        public IEnumerable<Product> GetAllProducts() => Products;
-
-        public Product GetProduct(int id)
-        {
-            return Products.FirstOrDefault(p => p.Id == id);
+            throw new NotImplementedException();
         }
 
         public Product UpdateProduct(Product product)
         {
-            var producttoUpated = GetProduct(product.Id);
-
-            if (producttoUpated != null) 
-            {
-                producttoUpated.Name = product.Name;
-                producttoUpated.Price = product.Price;
-                producttoUpated.Stock  = product.Stock;
-            }
-
-            return producttoUpated;
+            throw new NotImplementedException();
         }
     }
     
